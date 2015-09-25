@@ -23,7 +23,7 @@ namespace Fabrica_de_Conexiones
             Console.WriteLine("**** Una fábrica de conexiones muy sencilla ****");
 
             // Obtener una conexión específica
-            IDbConnection miCn = GetConnection(DataProvider.Odbc);
+            IDbConnection miCn = GetConnection(DataProvider.OleDb);
             Console.WriteLine("Tu conexión es una {0}", miCn.GetType().Name);
 
             // Abrir, utilizar y luego cerrar la conexión
@@ -38,9 +38,11 @@ namespace Fabrica_de_Conexiones
             {
                 case DataProvider.SqlServer:
                     conn = new SqlConnection();
+                    ConnectionSql myConn = new ConnectionSql();
                     break;
                 case DataProvider.OleDb:
                     conn = new OleDbConnection();
+                    MyConnectionOleDb myOtherConn = new MyConnectionOleDb();
                     break;
                 case DataProvider.Odbc:
                     conn = new OdbcConnection();
